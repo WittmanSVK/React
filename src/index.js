@@ -4,11 +4,18 @@ import './index.css';
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import reducer from './store/reducer';
+
+const store = createStore(reducer);
 
 const app = (
-    <BrowserRouter>
-        <App appTitle="Personal Manager"/>
-    </BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
+            <App appTitle="Personal Manager"/>
+        </BrowserRouter>
+    </Provider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));
